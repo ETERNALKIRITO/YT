@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GemPlayer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="gemplayer.css">
+  </head>
+  <body>
+    <!-- GemPlayer Main Container (Fullscreen) -->
+    <div id="gemPlayerContainer">
+      <!-- Content directly inside, no title bar -->
+      <div class="player-content">
+        <div class="media-player-url-bar">
+          <input type="text" class="media-player-input" placeholder="Enter YouTube Video URL or ID" />
+          <button class="media-player-load-button">Load</button>
+        </div>
+        <div class="media-player-video-container">
+          <!-- The YouTube player iframe will be injected here -->
+          <div id="youtube-player-gemPlayerContainer">
+               <p class="media-player-status-message">Initializing GemPlayer...</p>
+          </div>
+        </div>
+        <div class="media-player-controls-panel">
+          <div class="media-player-buttons-group">
+              <button class="media-player-control-button" id="media-player-play" title="Play">▶</button>
+              <button class="media-player-control-button" id="media-player-pause" title="Pause">❚❚</button>
+              <button class="media-player-control-button" id="media-player-stop" title="Stop">■</button>
+          </div>
+          <div class="media-player-progress-bar-container-placeholder">
+              <div class="media-player-progress-bar-placeholder"></div>
+          </div>
+          <div class="media-player-volume-placeholder">
+              <span>🔊</span>
+              <div class="media-player-volume-slider-placeholder"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="gemplayer.js" type="module"></script>
+  </body>
+</html>

@@ -1,0 +1,227 @@
+/* Base styles */
+:root {
+  --bg-color: #121212; /* Very dark gray */
+  --primary-surface-color: #1e1e1e; /* Dark gray for surfaces */
+  --secondary-surface-color: #2c2c2c; /* Slightly lighter gray for elements */
+  --text-color: #e0e0e0; /* Light gray for text */
+  --text-color-muted: #a0a0a0; /* Muted text */
+  --accent-color: #00A9A9; /* Teal accent, from original theme */
+  --border-color: #3a3a3a;
+  --input-bg-color: #333333;
+  --button-hover-bg: #454545;
+  --button-active-bg: #505050;
+  --font-primary: 'Inter', sans-serif;
+  --font-symbol: "Segoe UI Symbol", "Symbola", system-ui;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--bg-color);
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Prevent scrollbars */
+  color: var(--text-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+/* Main Player Container (replaces .window) */
+#gemPlayerContainer {
+  background-color: var(--primary-surface-color);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border-radius: 0; /* Fullscreen, no radius needed */
+}
+
+/* Player Content Area (replaces .window-content) */
+.player-content {
+  flex-grow: 1;
+  overflow: hidden; /* Content itself should handle scroll if needed */
+  background-color: transparent; /* Inherit from container or set specific */
+  display: flex;
+  flex-direction: column;
+  padding: 0; /* No padding around the player content wrapper */
+}
+
+
+/* --- Media Player (GemPlayer) Styles --- */
+#gemPlayerContainer .player-content { /* Specific override for media player layout */
+    padding: 0;
+    margin: 0;
+    background-color: var(--primary-surface-color); /* Match container */
+    border: none;
+}
+
+.media-player-url-bar {
+  display: flex;
+  padding: 12px 15px;
+  background-color: var(--secondary-surface-color);
+  border-bottom: 1px solid var(--border-color);
+  flex-shrink: 0;
+  align-items: center;
+}
+
+.media-player-input {
+  flex-grow: 1;
+  height: 38px;
+  border: 1px solid var(--border-color);
+  background-color: var(--input-bg-color);
+  color: var(--text-color);
+  padding: 0 12px;
+  font-family: var(--font-primary);
+  font-size: 0.9rem;
+  margin-right: 10px;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.media-player-input::placeholder {
+  color: var(--text-color-muted);
+}
+
+.media-player-load-button {
+  background-color: var(--accent-color);
+  border: none;
+  color: white;
+  padding: 0 18px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  height: 38px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.media-player-load-button:hover {
+  background-color: #008F8F; /* Darker accent */
+}
+
+.media-player-load-button:active {
+  background-color: #007A7A; /* Even darker accent */
+}
+
+.media-player-video-container {
+  flex-grow: 1;
+  background-color: black; /* Video background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  /* margin: 10px 15px; Optional margin around video area */
+  border: none; /* No border for fullscreen video */
+}
+
+.media-player-status-message {
+  padding:30px;
+  text-align:center;
+  color: var(--text-color-muted);
+  font-size: 1rem;
+}
+
+
+#youtube-player-gemPlayerContainer { /* ID changed to match container */
+    width: 100%;
+    height: 100%;
+}
+
+#youtube-player-gemPlayerContainer iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.media-player-controls-panel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 15px;
+  background-color: var(--secondary-surface-color);
+  border-top: 1px solid var(--border-color);
+  flex-shrink: 0;
+  height: 55px;
+  box-sizing: border-box;
+}
+
+.media-player-buttons-group {
+    display: flex;
+    align-items: center;
+}
+
+.media-player-control-button {
+  background-color: transparent;
+  border: 1px solid transparent; /* For consistent sizing, can be var(--border-color) */
+  font-family: var(--font-symbol);
+  font-size: 1.2rem; /* Larger symbols */
+  color: var(--text-color);
+  width: 40px;
+  height: 36px;
+  margin: 0 3px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+  line-height: 1;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.media-player-control-button:hover {
+  background-color: var(--button-hover-bg);
+}
+
+.media-player-control-button:active {
+  background-color: var(--button-active-bg);
+  color: var(--accent-color);
+}
+
+.media-player-control-button:disabled {
+    color: #666; /* Darker gray for disabled symbols */
+    background-color: transparent;
+    cursor: default;
+    opacity: 0.6;
+}
+
+.media-player-progress-bar-container-placeholder {
+    flex-grow: 1;
+    height: 10px; /* Slimmer bar */
+    background-color: var(--input-bg-color); /* Track color */
+    margin: 0 15px;
+    padding: 0;
+    border-radius: 5px;
+    overflow: hidden; /* To clip progress bar */
+    border: 1px solid var(--border-color);
+}
+.media-player-progress-bar-placeholder {
+    width: 30%; /* Just a visual placeholder */
+    height: 100%;
+    background-color: var(--accent-color); /* Progress color */
+    border-radius: 5px; /* Match container */
+}
+
+.media-player-volume-placeholder {
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem; /* For speaker icon */
+    color: var(--text-color);
+}
+.media-player-volume-placeholder span { /* Speaker icon */
+    margin-right: 8px;
+    cursor: default;
+}
+.media-player-volume-slider-placeholder {
+    width: 80px;
+    height: 6px;
+    background-color: var(--input-bg-color); /* Track color */
+    border-radius: 3px;
+    border: 1px solid var(--border-color);
+}
